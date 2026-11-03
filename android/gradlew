@@ -1,0 +1,32 @@
+#!/bin/sh
+# Gradle startup script for POSIX shells (also works in Git Bash on Windows).
+# Usage:  ./gradlew <task>      e.g.  ./gradlew assembleDebug
+set -e
+
+APP_HOME=$(cd "$(dirname "$0")" >/dev/null && pwd)
+CLASSPATH="$APP_HOME/gradle/wrapper/gradle-wrapper.jar"
+
+if [ ! -f "$CLASSPATH" ]; then
+    echo "ERROR: gradle/wrapper/gradle-wrapper.jar is missing." >&2
+    echo "Run this once from the project root to download it:" >&2
+    echo "    sh tools/get-gradle-wrapper.sh" >&2
+    exit 1
+fi
+
+if [ -n "$JAVA_HOME" ] && [ -x "$JAVA_HOME/bin/java" ]; then
+    JAVACMD="$JAVA_HOME/bin/java"
+else
+    JAVACMD=java
+fi
+
+# Git Bash / Cygwin give java.exe a POSIX path it cannot read, so convert it.
+case "$(uname)" in
+    MINGW* | MSYS* | CYGWIN*)
+        CLASSPATH=$(cygpath -w "$CLASSPATH")
+        ;;
+esac
+
+exec "$JAVACMD" -Xmx64m -Xms64m \
+    "-Dorg.gradle.appname=gradlew" \
+    -classpath "$CLASSPATH" \
+    org.gradle.wrapper.GradleWrapperMain "$@"
