@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      Compose draws all the real styling (see ui/theme/Theme.kt).
+      This theme only has to give the window a sensible look for the instant
+      before Compose takes over, and hide the old-style action bar.
+
+      The window background comes from @color/window_background, which has a
+      dark variant in res/values-night/ - so launching the app in dark mode
+      does not flash white.
+
+      The app draws edge to edge (MainActivity calls enableEdgeToEdge), so the
+      system bars are left transparent and Scaffold's insets keep content
+      clear of them.
+    -->
+    <style name="Theme.CommunityVoice" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+</resources>
