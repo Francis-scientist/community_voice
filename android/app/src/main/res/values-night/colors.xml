@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark-theme overrides. Android picks this folder automatically when
+         the system is in dark mode, which is the same signal Compose's
+         isSystemInDarkTheme() reads - so the window and the UI agree. -->
+    <color name="window_background">#0E1311</color>
+</resources>

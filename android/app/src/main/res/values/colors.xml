@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#1B6B4A</color>
+
+    <!--
+      The window background, shown for the instant before Compose draws.
+      Keeping it the same as the Compose background (see ui/theme/Theme.kt)
+      means no white flash on launch. The dark value lives in values-night/.
+    -->
+    <color name="window_background">#F6FAF7</color>
+</resources>
